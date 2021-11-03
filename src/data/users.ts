@@ -1,4 +1,4 @@
-export const users = [
+export const users: Array<User> = [
     {
         id: "1",
         name: 'Josh',
@@ -10,3 +10,9 @@ export const users = [
         surname: 'Kovalskyy',
     },
   ];
+
+  export type User = {
+      id: string,
+      name: string,
+      surname: string
+  }

@@ -1,5 +1,5 @@
 import { Post, posts } from './../data/posts';
-import { users } from './../data/users'
+import { User, users } from './../data/users'
 
 export const resolvers = {
     Query: {
@@ -10,5 +10,8 @@ export const resolvers = {
     },
     Post: {
         users (parent: Post) { return users.filter((user) => parent.users.includes(user.id))}
+    },
+    User: {
+        posts (parent: User) { return posts.filter((post) => post.users.includes(parent.id))}
     }
   };

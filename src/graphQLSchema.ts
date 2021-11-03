@@ -6,20 +6,20 @@ export const typeDefs = gql`
         id: ID!
         name: String
         surname: String
-        posts: [Post]
+        posts: [Post]!
     }
 
     type Post {
         id: ID!
         name: String
         description: String
-        users: [User]
+        users: [User]!
     }
 
   type Query {
-    users: [User],
+    users: [User]!,
     user(id: ID!): User
-    posts: [Post],
+    posts: [Post]!,
     post(id: ID!): Post
   }
 

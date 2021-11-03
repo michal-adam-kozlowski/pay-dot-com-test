@@ -3,6 +3,6 @@ import { users } from './../data/users'
 export const resolvers = {
     Query: {
       users: () => users,
-      user: (_: unknown, { name }: {name: string}) => users.find((user) => user.name === name) || null
+      user: (_: unknown, { id }: {id: string}) => users.find((user) => user.id === id) || null
     },
   };

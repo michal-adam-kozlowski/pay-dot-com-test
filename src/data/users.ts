@@ -1,13 +1,13 @@
 export const users: Array<User> = [
     {
         id: "1",
-        name: 'Josh',
-        surname: 'Chaplinn',
+        name: 'Johnny',
+        surname: 'Silverhand',
     },
     {
         id: "2",
-        name: 'John',
-        surname: 'Kovalskyy',
+        name: 'Thomas',
+        surname: 'Anderson',
     },
   ];
 

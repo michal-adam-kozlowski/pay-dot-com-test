@@ -8,8 +8,14 @@ export const posts: Array<Post> = [
     {
         id: "2",
         name: 'The Expanse',
-        description: 'Leviathan returns...',
+        description: 'Jim Holden travels through galaxy...',
         users: ["1", "2"]
+    },
+    {
+        id: "3",
+        name: 'Game of Thrones',
+        description: 'Winter can last a lifetime...',
+        users: ["2"]
     },
   ];
 

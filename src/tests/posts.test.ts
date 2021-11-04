@@ -62,5 +62,5 @@ describe('Posts API test', ()=> {
             expect(posts[0].users[0].name).toBe("Johnny");
         });
     });
-})
+});
 

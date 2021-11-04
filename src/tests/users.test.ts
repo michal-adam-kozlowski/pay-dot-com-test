@@ -1,0 +1,65 @@
+import { ApolloServer } from 'apollo-server';
+import { typeDefs } from '../graphQLSchema';
+import { resolvers } from '../resolvers'
+import { data } from '../data/index';
+import { usersQueriesMockup } from './mockups/usersQueriesMockup';
+
+const server = new ApolloServer({ typeDefs, resolvers, context: () => ({
+    localData: data
+})});
+
+describe('Users API test', ()=> {
+    describe('single user', ()=> {
+        it('should get single user', async ()=> {
+            const result = await server.executeOperation({
+                query: usersQueriesMockup.GET_SINGLE_USER
+            })
+            const user = result.data?.user;
+
+            expect(result.errors).toBeUndefined();
+            expect(user.name).toBe('Johnny');
+            expect(user.users).toBeUndefined();
+        });
+        it('should get single user with posts', async ()=> {
+            const result = await server.executeOperation({
+                query: usersQueriesMockup.GET_SINGLE_USER_WITH_POSTS
+            })
+            const user = result.data?.user
+
+            expect(result.errors).toBeUndefined();
+            expect(user.name).toBe('Thomas');
+            expect(user.posts.length).toBe(2);
+            expect(user.posts[0].name).toBe("The Expanse");
+        });
+        it('should throw error if can not find user', async ()=> {
+            const result = await server.executeOperation({
+                query: usersQueriesMockup.GET_USER_FAILD
+            })
+
+            expect(result.errors).toBeDefined();
+        })
+    });
+    describe('get all users', () => {
+        it('should get all users', async () => {
+            const result = await server.executeOperation({
+                query: usersQueriesMockup.GET_USERS
+            })
+            const users = result.data?.users;
+
+            expect(result.errors).toBeUndefined();
+            expect(users.length).toBe(2);
+            expect(users[0].posts).toBeUndefined();
+        });
+        it('should get users with posts', async ()=> {
+            const result = await server.executeOperation({
+                query: usersQueriesMockup.GET_USERS_WITH_POSTS
+            })
+            const users = result.data?.users
+
+            expect(result.errors).toBeUndefined();
+            expect(users.length).toBe(2);
+            expect(users[0].posts.length).toBe(2);
+            expect(users[0].posts[0].name).toBe("Star Wars");
+        });
+    });
+});

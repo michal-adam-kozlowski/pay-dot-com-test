@@ -31,12 +31,12 @@ describe('Users API test', ()=> {
             expect(user.posts.length).toBe(2);
             expect(user.posts[0].name).toBe("The Expanse");
         });
-        it('should throw error if can not find user', async ()=> {
+        it('should return null if can not find user', async ()=> {
             const result = await server.executeOperation({
                 query: usersQueriesMockup.GET_USER_FAILD
             })
 
-            expect(result.errors).toBeDefined();
+            expect(result.data?.user).toBe(null);
         })
     });
     describe('get all users', () => {

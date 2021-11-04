@@ -31,12 +31,12 @@ describe('Posts API test', ()=> {
             expect(post.users.length).toBe(2);
             expect(post.users[0].name).toBe("Johnny");
         });
-        it('should throw error if can not find post', async ()=> {
+        it('should return null if can not find post', async ()=> {
             const result = await server.executeOperation({
                 query: postsQueriesMockup.GET_POST_FAILD
             })
 
-            expect(result.errors).toBeDefined();
+            expect(result.data?.post).toBe(null);
         })
     });
     describe('get all posts', () => {

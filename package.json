@@ -4,7 +4,7 @@
     "build": "tsc",
     "start": "tsc & node .",
     "dev": "tsc -w & nodemon .",
-    "test": "jest --verbose",
+    "test": "jest",
     "test:dev": "jest --watch --verbose",
     "eslint": "eslint ./src --ext .ts",
     "eslint:fix": "eslint ./src --ext .ts --fix"

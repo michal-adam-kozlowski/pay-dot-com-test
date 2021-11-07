@@ -5,22 +5,21 @@ import { resolvers } from '../resolvers';
 import { usersQueriesMockup } from './mockups/usersQueriesMockup';
 import config from '../config';
 
-
 describe('Users API test', () => {
-    let server: ApolloServer;
-    beforeAll(() => {
-        server = new ApolloServer({
-            typeDefs,
-            resolvers,
-            context: async () => ({
-              db: await mongoose.connect(config.DATABASE_URL),
-            }),
-          });
+  let server: ApolloServer;
+  beforeAll(() => {
+    server = new ApolloServer({
+      typeDefs,
+      resolvers,
+      context: async () => ({
+        db: await mongoose.connect(config.DATABASE_URL),
+      }),
     });
-    afterAll(done => {
-        mongoose.connection.close()
-        done()
-      })
+  });
+  afterAll((done) => {
+    mongoose.connection.close();
+    done();
+  });
   describe('single user', () => {
     it('should get single user', async () => {
       const result = await server.executeOperation({

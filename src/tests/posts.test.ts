@@ -6,20 +6,20 @@ import { postsQueriesMockup } from './mockups/postsQueriesMockup';
 import config from '../config';
 
 describe('Posts API test', () => {
-    let server: ApolloServer;
-    beforeAll(() => {
-        server = new ApolloServer({
-            typeDefs,
-            resolvers,
-            context: async () => ({
-              db: await mongoose.connect(config.DATABASE_URL),
-            }),
-          });
+  let server: ApolloServer;
+  beforeAll(() => {
+    server = new ApolloServer({
+      typeDefs,
+      resolvers,
+      context: async () => ({
+        db: await mongoose.connect(config.DATABASE_URL),
+      }),
     });
-    afterAll(done => {
-        mongoose.connection.close()
-        done()
-      })
+  });
+  afterAll((done) => {
+    mongoose.connection.close();
+    done();
+  });
   describe('single post', () => {
     it('should get single post', async () => {
       const result = await server.executeOperation({

@@ -8,7 +8,7 @@ type Context = { db: typeof mongoose };
 
 export const resolvers = {
   Query: {
-    users: (_: never, __: never, { db }: Context) => console.log("Hello world"),
+    users: (_: never, __: never, { db }: Context) => db.model('users', userSchema).find({}).exec(),
     user: (_: never, { id }: { id: string }, { db }: Context) =>
       db.model('user', userSchema).findOne({ id }).exec(),
     posts: (_: never, __: never, { db }: Context) => db.model('posts', postSchema).find({}).exec(),

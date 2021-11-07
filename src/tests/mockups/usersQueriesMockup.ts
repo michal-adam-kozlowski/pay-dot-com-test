@@ -41,6 +41,10 @@ export const usersQueriesMockup = {
       }
     }
   `,
+
+
+
+
   GET_USER_FAILD: gql`
     query {
       user(id: "9") {

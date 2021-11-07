@@ -11,6 +11,7 @@ module.exports = {
   },
   extends: [
     'airbnb-base',
+    'prettier',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -19,9 +20,11 @@ module.exports = {
   },
   plugins: [
     '@typescript-eslint',
+    'prettier'
   ],
   rules: {
     'import/extensions': 'off',
     'import/prefer-default-export': 'off',
+    'prettier/prettier': 'error'
   },
 };

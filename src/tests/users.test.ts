@@ -1,11 +1,12 @@
 import { ApolloServer } from 'apollo-server';
 import { typeDefs } from '../graphQLSchema';
 import { resolvers } from '../resolvers'
-import { data } from '../data/index';
+import mongoose from 'mongoose'
 import { usersQueriesMockup } from './mockups/usersQueriesMockup';
+import config from './../config';
 
-const server = new ApolloServer({ typeDefs, resolvers, context: () => ({
-    localData: data
+const server = new ApolloServer({ typeDefs, resolvers, context: async () => ({
+    db: await mongoose.connect(config.DATABASE_URL)
 })});
 
 describe('Users API test', ()=> {
@@ -50,9 +51,9 @@ describe('Users API test', ()=> {
             expect(users.length).toBe(2);
             expect(users[0].posts).toBeUndefined();
         });
-        it('should get users with posts', async ()=> {
+        it('should get users with posts with users', async ()=> {
             const result = await server.executeOperation({
-                query: usersQueriesMockup.GET_USERS_WITH_POSTS
+                query: usersQueriesMockup.GET_USERS_WITH_POSTS_WITH_USERS
             })
             const users = result.data?.users
 

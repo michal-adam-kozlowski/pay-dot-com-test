@@ -15,7 +15,7 @@ export const usersQueriesMockup = {
     }
   }
 `,
-  GET_USERS_WITH_POSTS: gql`
+  GET_USERS_WITH_POSTS_WITH_USERS: gql`
   query {
     users {
       name

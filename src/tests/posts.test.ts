@@ -5,15 +5,21 @@ import { resolvers } from '../resolvers';
 import { postsQueriesMockup } from './mockups/postsQueriesMockup';
 import config from '../config';
 
-const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-  context: async () => ({
-    db: await mongoose.connect(config.DATABASE_URL),
-  }),
-});
-
 describe('Posts API test', () => {
+    let server: ApolloServer;
+    beforeAll(() => {
+        server = new ApolloServer({
+            typeDefs,
+            resolvers,
+            context: async () => ({
+              db: await mongoose.connect(config.DATABASE_URL),
+            }),
+          });
+    });
+    afterAll(done => {
+        mongoose.connection.close()
+        done()
+      })
   describe('single post', () => {
     it('should get single post', async () => {
       const result = await server.executeOperation({

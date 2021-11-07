@@ -7,10 +7,13 @@ module.exports = {
       '^@modules(.*)$': '<rootDir>/src/modules/$1',
       '^@shared(.*)$': '<rootDir>/src/shared/$1',
     },
+    modulePathIgnorePatterns: [
+      'dist'
+    ],
     coveragePathIgnorePatterns: [
       'node_modules',
       'test-config',
       '.module.ts',
-      '.mock.ts',
+      '.mock.ts'
     ],
   };

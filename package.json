@@ -4,7 +4,8 @@
     "build": "tsc",
     "start": "tsc & node .",
     "dev": "tsc -w & nodemon .",
-    "test": "jest --watch --verbose"
+    "test": "jest --verbose",
+    "test:dev": "jest --watch --verbose"
   },
   "dependencies": {
     "apollo-server": "^3.4.0",
@@ -14,7 +15,6 @@
     "mongoose": "^6.0.12"
   },
   "devDependencies": {
-    "@types/express": "^4.17.13",
     "@types/jest": "^27.0.2",
     "@types/node": "^16.11.6",
     "jest": "^27.3.1",

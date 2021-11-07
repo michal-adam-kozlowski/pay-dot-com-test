@@ -1,10 +1,10 @@
 import mongoose from 'mongoose';
 
-const Schema = mongoose.Schema;
+const { Schema } = mongoose;
 
 export const postSchema = new Schema({
-    id: String,
-    name: String,
-    description: String,
-    users: Array
+  id: String,
+  name: String,
+  description: String,
+  users: Array,
 });

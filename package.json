@@ -6,7 +6,8 @@
     "dev": "tsc -w & nodemon .",
     "test": "jest --verbose",
     "test:dev": "jest --watch --verbose",
-    "eslint": "eslint ./src --ext .ts"
+    "eslint": "eslint ./src --ext .ts",
+    "eslint:fix": "eslint ./src --ext .ts --fix"
   },
   "dependencies": {
     "apollo-server": "^3.4.0",

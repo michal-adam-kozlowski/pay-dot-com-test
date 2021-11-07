@@ -46,5 +46,5 @@ export const usersQueriesMockup = {
     user(id: "9") {
       name
     }
-  }`
+  }`,
 };
